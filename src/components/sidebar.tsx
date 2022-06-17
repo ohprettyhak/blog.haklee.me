@@ -4,7 +4,6 @@ import { useLocation } from '@reach/router';
 import { StaticImage } from 'gatsby-plugin-image';
 import {
   useColorMode,
-  useColorModeValue,
   Grid,
   Flex,
   VStack,
@@ -36,7 +35,18 @@ const Navigation: React.FC = () => {
       top={{ base: '0', md: '4' }}
     >
       <Flex direction="column">
-        <Link as={GatsbyLink} to="/" display="inline-block" color="transparent" textDecoration="none">
+        <Link
+          as={GatsbyLink}
+          to="/"
+          display="inline-block"
+          width="24"
+          height="24"
+          overflow="hidden"
+          borderRadius="50%"
+          color="transparent"
+          textDecoration="none"
+          transform="translateZ(0)"
+        >
           <StaticImage
             src="../assets/image/img-profile.jpg"
             alt="Profile Image"
@@ -45,8 +55,6 @@ const Navigation: React.FC = () => {
             width={96}
             height={96}
             style={{
-              overflow: 'hidden',
-              borderRadius: '50%',
               pointerEvents: 'none',
             }}
           />
@@ -59,26 +67,20 @@ const Navigation: React.FC = () => {
           mt="4"
           fontSize="medium"
           fontWeight="bold"
-          fontFamily="body"
           textDecoration="none"
           transition="color 0.3s ease-in-out"
-          color="gray.900"
           _hover={{
             color: 'pink.400',
           }}
         >
           {config.auther.name}
         </Link>
-        <Text mt="3" color="gray.600" fontSize="md" fontFamily="body">
+        <Text mt="3" color={colorMode === `light` ? 'gray.600' : 'white'} fontSize="md">
           {config.description}
         </Text>
       </Flex>
 
-      <VStack
-        gap={{ base: '2', md: '8' }}
-        alignItems={{ base: 'flex-end', md: 'flex-start' }}
-        mt={{ base: 'auto', md: '0' }}
-      >
+      <VStack gap={{ base: '2', md: '8' }} alignItems={{ base: 'flex-end', md: 'flex-start' }}>
         {/* Menu */}
         <UnorderedList padding="0" listStyleType="none" marginInlineStart="0" spacing="3">
           {config.menu.map((item) => (
@@ -87,9 +89,8 @@ const Navigation: React.FC = () => {
                 as={GatsbyLink}
                 to={item.path}
                 textDecoration="none"
-                color={pathname == item.path ? 'pink.400' : 'gray.600'}
+                color={pathname == item.path ? 'pink.400' : colorMode === `light` ? 'gray.600' : 'white'}
                 fontSize="md"
-                fontFamily="body"
                 borderBottomColor={pathname == item.path ? 'pink.400' : 'transparent'}
                 borderBottomWidth="1px"
                 borderBottomStyle="solid"
@@ -123,18 +124,16 @@ const Navigation: React.FC = () => {
             <FaEnvelope />
           </SocialIcon>
         </SimpleGrid>
+        <IconButton
+          display={{ base: 'none', md: 'flex' }}
+          width="4"
+          aria-label="Switch Color Mode"
+          colorScheme="gray"
+          onClick={toggleColorMode}
+          isRound
+          icon={colorMode === `light` ? <FaMoon /> : <FaSun />}
+        />
       </VStack>
-
-      <IconButton
-        width="4"
-        aria-label="Switch Color Mode"
-        variant="solid"
-        colorScheme="gray"
-        marginTop="2"
-        onClick={toggleColorMode}
-        isRound
-        icon={colorMode === `light` ? <FaMoon /> : <FaSun />}
-      />
     </Grid>
   );
 };
