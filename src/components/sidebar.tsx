@@ -2,7 +2,19 @@ import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Grid, Flex, VStack, UnorderedList, ListItem, SimpleGrid, Link, Text } from '@chakra-ui/react';
+import {
+  useColorMode,
+  useColorModeValue,
+  Grid,
+  Flex,
+  VStack,
+  UnorderedList,
+  ListItem,
+  SimpleGrid,
+  Link,
+  Text,
+  IconButton,
+} from '@chakra-ui/react';
 import { FaGithub, FaInstagram, FaLinkedinIn, FaRss, FaEnvelope, FaMoon, FaSun } from 'react-icons/fa';
 
 import config from '../../config';
@@ -10,6 +22,9 @@ import SocialIcon from './social-icon';
 
 const Navigation: React.FC = () => {
   const { pathname } = useLocation();
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  console.log(colorMode);
 
   return (
     <Grid
@@ -109,6 +124,17 @@ const Navigation: React.FC = () => {
           </SocialIcon>
         </SimpleGrid>
       </VStack>
+
+      <IconButton
+        width="4"
+        aria-label="Switch Color Mode"
+        variant="solid"
+        colorScheme="gray"
+        marginTop="2"
+        onClick={toggleColorMode}
+        isRound
+        icon={colorMode === `light` ? <FaMoon /> : <FaSun />}
+      />
     </Grid>
   );
 };

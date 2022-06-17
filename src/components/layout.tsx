@@ -1,8 +1,8 @@
 import React from 'react';
-import { ChakraProvider, Container, Grid, Box } from '@chakra-ui/react';
+import { ChakraProvider, Container, Grid, Box, IconButton } from '@chakra-ui/react';
 
 import customTheme from '../../theme';
-import Nav from './nav';
+import Sidebar from './sidebar';
 import Seo from './seo';
 
 type SitePageContext = {
@@ -24,7 +24,7 @@ const Layout: React.FC<SitePageContext> = ({ children }) => {
             py="10"
             gap={{ base: '0', md: '2', lg: '10' }}
           >
-            <Nav />
+            <Sidebar />
             <Box
               background="linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff)"
               height="33vh"
