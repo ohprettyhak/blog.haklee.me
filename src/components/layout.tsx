@@ -2,8 +2,8 @@ import React from 'react';
 import { ChakraProvider, Container, Grid, Box } from '@chakra-ui/react';
 
 import customTheme from '../../theme';
-import Nav from './Nav';
-import Seo from './Seo';
+import Nav from './nav';
+import Seo from './seo';
 
 type SitePageContext = {
   children: React.ReactNode;
