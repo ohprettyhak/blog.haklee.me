@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useColorModeValue, chakra, SimpleGrid, Box, Center, Link, Text, keyframes } from '@chakra-ui/react';
-import { FaPlayCircle, FaVolumeDown } from 'react-icons/fa';
 
 const CoverImage = chakra(GatsbyImage);
 
