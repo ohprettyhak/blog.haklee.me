@@ -32,11 +32,40 @@ const customTheme = extendTheme({
         },
       }),
     },
+    Heading: {
+      baseStyle: {
+        fontSize: '2xl',
+      },
+      variants: {
+        pagetitle: {
+          fontSize: '4xl',
+          mt: '0',
+          mb: '8',
+        },
+        title: {
+          fontSize: '2xl',
+          my: '0',
+          lineHeight: 'tall',
+        },
+        heading: {
+          fontSize: '3xl',
+        },
+      },
+      defaultProps: {
+        variant: 'pagetitle',
+      },
+    },
     Text: {
       baseStyle: (props) => ({
-        color: mode('gray.800', 'white')(props),
         transition: 'all 0.1s ease-in-out',
       }),
+      variants: {
+        small: (props) => ({
+          margin: '0',
+          marginBottom: '2',
+          fontSize: 'sm',
+        }),
+      },
     },
   },
   styles: {
@@ -55,6 +84,7 @@ const customTheme = extendTheme({
         fontFamily: 'body',
         borderBottomWidth: '1px',
         borderBottomColor: 'transparent',
+        transition: 'all 0.1s ease-in-out',
         _hover: {
           color: mode('primary.500', 'primary.400')(props),
           borderBottomColor: mode('primary.500', 'primary.400')(props),
@@ -99,6 +129,9 @@ const customTheme = extendTheme({
         fontSize: 'lg',
         fontStyle: 'italic',
         fontFamily: 'body',
+      },
+      '*::selection': {
+        background: mode('blackAlpha.200', 'whiteAlpha.200')(props),
       },
     }),
   },

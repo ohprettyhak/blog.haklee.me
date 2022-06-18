@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router';
 import { StaticImage } from 'gatsby-plugin-image';
 import {
   useColorMode,
+  useColorModeValue,
   Grid,
   Flex,
   VStack,
@@ -22,8 +23,6 @@ import SocialIcon from './social-icon';
 const Navigation: React.FC = () => {
   const { pathname } = useLocation();
   const { colorMode, toggleColorMode } = useColorMode();
-
-  console.log(colorMode);
 
   return (
     <Grid
@@ -75,7 +74,7 @@ const Navigation: React.FC = () => {
         >
           {config.auther.name}
         </Link>
-        <Text mt="3" color={colorMode === `light` ? 'gray.600' : 'white'} fontSize="md">
+        <Text mt="3" color={useColorModeValue('gray.600', 'white')} fontSize="md">
           {config.description}
         </Text>
       </Flex>
@@ -89,7 +88,7 @@ const Navigation: React.FC = () => {
                 as={GatsbyLink}
                 to={item.path}
                 textDecoration="none"
-                color={pathname == item.path ? 'pink.400' : colorMode === `light` ? 'gray.600' : 'white'}
+                color={pathname == item.path ? 'pink.400' : useColorModeValue('gray.600', 'white')}
                 fontSize="md"
                 borderBottomColor={pathname == item.path ? 'pink.400' : 'transparent'}
                 borderBottomWidth="1px"

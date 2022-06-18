@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import { useColorMode, Link } from '@chakra-ui/react';
+import { useColorModeValue, Link } from '@chakra-ui/react';
 
 type SocialIconType = {
   href: string;
@@ -9,8 +9,6 @@ type SocialIconType = {
 };
 
 const SocialIcon: React.FC<SocialIconType> = ({ children, href, label }) => {
-  const { colorMode } = useColorMode();
-
   return (
     <Link
       as={GatsbyLink}
@@ -23,7 +21,7 @@ const SocialIcon: React.FC<SocialIconType> = ({ children, href, label }) => {
       height="10"
       alignItems="center"
       justifyContent="center"
-      color={colorMode === `light` ? 'gray.900' : 'white'}
+      color={useColorModeValue('gray.900', 'white')}
       textDecoration="none"
       borderColor="gray.200"
       borderWidth="1px"
@@ -33,8 +31,8 @@ const SocialIcon: React.FC<SocialIconType> = ({ children, href, label }) => {
       overflow="hidden"
       transition="all 0.3s ease-in-out"
       _hover={{
-        color: colorMode === `light` ? 'pink.500' : 'white',
-        backgroundColor: colorMode === `light` ? 'pink.50' : 'whiteAlpha.300',
+        color: useColorModeValue('pink.500', 'white'),
+        backgroundColor: useColorModeValue('pink.50', 'whiteAlpha.300'),
       }}
     >
       {children}

@@ -14,5 +14,16 @@ module.exports = {
         isUsingColorMode: false,
       },
     },
+    {
+      resolve: `gatsby-source-spotify`,
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+        fetchPlaylists: false, 
+        fetchRecent: true,
+        timeRanges: ['short_term'],
+      },
+    },
   ],
 };
