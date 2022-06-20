@@ -5,7 +5,7 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Layout from '../components/layout';
 import Now from '../components/now';
 
-const IndexPage: React.FC = React.memo(() => {
+const IndexPage: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -25,6 +25,6 @@ const IndexPage: React.FC = React.memo(() => {
       <></>
     </Layout>
   );
-});
+};
 
 export default IndexPage;

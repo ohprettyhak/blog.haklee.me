@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link as GatsbyLink } from 'gatsby';
 import { useColorModeValue, Link } from '@chakra-ui/react';
 
 type SocialIconType = {
@@ -11,8 +10,7 @@ type SocialIconType = {
 const SocialIcon: React.FC<SocialIconType> = ({ children, href, label }) => {
   return (
     <Link
-      as={GatsbyLink}
-      to={href}
+      href={href}
       target="_blank"
       variant="outline"
       aria-label={label}

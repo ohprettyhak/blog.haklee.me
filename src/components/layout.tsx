@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider, Container, Grid, Box, IconButton } from '@chakra-ui/react';
+import { ChakraProvider, Container, Grid, Box } from '@chakra-ui/react';
 
 import customTheme from '../../theme';
 import Sidebar from './sidebar';
