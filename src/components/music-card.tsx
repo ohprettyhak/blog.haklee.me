@@ -31,12 +31,12 @@ interface topArtistsType {
 }
 
 const MusicCard: React.FC = () => {
-  const [musicList, setmusicList] = useState(null);
+  const [musicList, setMusicList] = useState(null);
 
   useEffect(() => {
     Axios.get(TOP_ARTISTS_URL)
       .then((result) => {
-        setmusicList(result.data);
+        setMusicList(result.data);
       })
       .catch((err) => {
         console.log(err);
