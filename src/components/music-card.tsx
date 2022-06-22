@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link as GatsbyLink } from 'gatsby';
 import Axios from 'axios';
 import { useColorModeValue, SimpleGrid, Box, Center, Link, Text, Image, keyframes } from '@chakra-ui/react';
 
@@ -60,17 +59,11 @@ const MusicCard: React.FC = () => {
         </Text>
         <SimpleGrid columns={2} row={2} spacingX={2} spacingY={4} alignItems="center" justifyContent="center">
           {!musicList ? (
-            <Text>Loading</Text>
+            <Text color={useColorModeValue('gray.500', 'white')}>Loading</Text>
           ) : (
             musicList.map((artist: topArtistsType, i: number) => (
-              <Center mb="auto" textAlign="center" flexDirection="column">
-                <Link
-                  as={GatsbyLink}
-                  to={artist.link}
-                  title={`Listen to ${artist.name} now on Spotify`}
-                  target="_blank"
-                  key={artist.name}
-                >
+              <Center mb="auto" textAlign="center" flexDirection="column" key={i}>
+                <Link href={artist.link} title={`Listen to ${artist.name} now on Spotify`} target="_blank">
                   <Box
                     w="20"
                     h="20"

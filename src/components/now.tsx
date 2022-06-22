@@ -2,6 +2,7 @@ import React from 'react';
 import { SimpleGrid, Collapse, Box } from '@chakra-ui/react';
 
 import MusicCard from './music-card';
+import BookCard from './book-card';
 
 type NowType = {
   isOpen: boolean;
@@ -12,6 +13,7 @@ const Now: React.FC<NowType> = ({ isOpen }) => {
     <Collapse in={isOpen} animateOpacity>
       <SimpleGrid columns={2} spacing={4} mb="8">
         <MusicCard />
+        <BookCard />
         <Box gridColumn="span 2" position="relative">
           <Box
             bgGradient="linear(to-b, rgba(196,196,196,0) 0%, background 80%)"
