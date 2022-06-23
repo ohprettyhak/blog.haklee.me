@@ -54,13 +54,10 @@ const MusicCard: React.FC = () => {
         transition="all 0.2s ease-in-out"
         _hover={{ boxShadow: 'base' }}
       >
-        <Text pb={2} variant="small">
-          🎧 Recently Listened
-        </Text>
-        <SimpleGrid columns={2} row={2} spacingX={2} spacingY={4} alignItems="center" justifyContent="center">
-          {!data ? (
-            <Text color={useColorModeValue('gray.500', 'white')}>Loading</Text>
-          ) : (
+        <Text variant="small">🎧 Recently Listened</Text>
+        {!data && <Text color={useColorModeValue('gray.500', 'white')}>Loading</Text>}
+        <SimpleGrid pt={2} columns={2} row={2} spacingX={2} spacingY={4} alignItems="center" justifyContent="center">
+          {data &&
             data.map((artist: dataType, i: number) => (
               <Center mb="auto" textAlign="center" flexDirection="column" key={i}>
                 <Link href={artist.link} title={`Listen to ${artist.name} now on Spotify`} target="_blank">
@@ -143,8 +140,7 @@ const MusicCard: React.FC = () => {
                   {artist.name}
                 </Text>
               </Center>
-            ))
-          )}
+            ))}
         </SimpleGrid>
       </Box>
     </React.Fragment>
