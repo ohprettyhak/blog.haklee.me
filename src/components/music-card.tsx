@@ -22,7 +22,7 @@ const bounce = keyframes`
 
 const animation = `${bounce} 2.2s ease infinite alternate`;
 
-const TOP_ARTISTS_URL = `https://haklee-notes-api.web.app/spotify/artists`;
+const TOP_ARTISTS_URL = `https://haklee-notes-api.web.app/spotify/top_artists`;
 
 interface topArtistsType {
   name: string;
