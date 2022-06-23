@@ -24,19 +24,19 @@ const animation = `${bounce} 2.2s ease infinite alternate`;
 
 const TOP_ARTISTS_URL = `https://haklee-notes-api.web.app/spotify/top_artists`;
 
-interface topArtistsType {
+interface dataType {
   name: string;
   image: string;
   link: string;
 }
 
 const MusicCard: React.FC = () => {
-  const [musicList, setMusicList] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     Axios.get(TOP_ARTISTS_URL)
       .then((result) => {
-        setMusicList(result.data);
+        setData(result.data);
       })
       .catch((err) => {
         console.log(err);
@@ -58,10 +58,10 @@ const MusicCard: React.FC = () => {
           🎧 Recently Listened
         </Text>
         <SimpleGrid columns={2} row={2} spacingX={2} spacingY={4} alignItems="center" justifyContent="center">
-          {!musicList ? (
+          {!data ? (
             <Text color={useColorModeValue('gray.500', 'white')}>Loading</Text>
           ) : (
-            musicList.map((artist: topArtistsType, i: number) => (
+            data.map((artist: dataType, i: number) => (
               <Center mb="auto" textAlign="center" flexDirection="column" key={i}>
                 <Link href={artist.link} title={`Listen to ${artist.name} now on Spotify`} target="_blank">
                   <Box
