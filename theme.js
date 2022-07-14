@@ -3,8 +3,8 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const customTheme = extendTheme({
   config: {
+    initialColorMode: 'system',
     useSystemColorMode: true,
-    initialColorMode: 'dark',
   },
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Pretendard, Roboto, Noto Sans KR, Segoe UI, Malgun Gothic, sans-serif',
