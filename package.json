@@ -1,8 +1,8 @@
 {
-  "name": "semantic",
+  "name": "reflection",
   "version": "1.0.0",
   "private": true,
-  "description": "semantic",
+  "description": "reflection",
   "author": "ohprettyhak",
   "keywords": [
     "gatsby"

@@ -1,16 +1,16 @@
 export const profile = {
-  cardBackgroundColor: '#FAEE5D',
-  modalButtonColor: '#AB8C20',
+  cardBackgroundColor: '#60E475',
+  modalButtonColor: '#FFF581',
 
-  profileImageShadowColor: 'rgba(232, 114, 24, 0.43)',
-  profileImageFilter: '',
-  authorTextColor: '#302C1D',
+  profileImageShadowColor: '#27B03D',
+  profileImageFilter: 'grayscale(0.9)',
+  authorTextColor: '#1B301F',
 
-  titleTextColor: '#CAA937',
-  contentTextColor: '#302C1D',
+  titleTextColor: '#1A852B',
+  contentTextColor: '#1B301F',
 
   userDetails: [
-    { title: 'Studying', content: 'Product design\nUI/UX design' },
+    { title: 'Studying', content: 'Frontend\nWeb Interactive' },
     { title: 'Location', content: 'Seoul, South Korea' },
   ],
 };

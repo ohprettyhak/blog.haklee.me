@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'semantic',
-  author: 'Knesssn',
-  description: 'Make your ✨gorgeous post with semantic',
-  siteUrl: `https://semantic.nylonbricks.com`,
-  email: 'contact@nylonbricks.com',
+  title: 'reflection',
+  author: 'Hak Lee',
+  description: `Hak Lee's Reflective Space`,
+  siteUrl: `https://blog.haklee.me`,
+  email: 'me@haklee.me',
 };

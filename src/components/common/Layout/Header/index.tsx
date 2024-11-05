@@ -38,11 +38,24 @@ const Header = () => {
               {title}
             </Link>
 
-            <Accordion.Item className={styles.menuContainer} value="menu">
-              <button className={styles.menu} onClick={() => setAccordionOpen(!accordionOpen)}>
+            <Accordion.Item
+              className={styles.menuContainer}
+              id="menu-accordion-item"
+              value="menu"
+              aria-label="Menu Accordion"
+            >
+              <button
+                className={styles.menu}
+                onClick={() => setAccordionOpen(!accordionOpen)}
+                aria-controls="menu-accordion-content"
+              >
                 {accordionOpen ? '-' : 'menu'}
               </button>
-              <Accordion.Content className={styles.menuContent}>
+              <Accordion.Content
+                className={styles.menuContent}
+                id="menu-accordion-content"
+                aria-labelledby="menu-accordion-item"
+              >
                 <div className={styles.menuContentInner}>
                   <div className={styles.menuContentNavigation}>
                     <NavigateMenu />
