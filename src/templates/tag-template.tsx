@@ -69,5 +69,9 @@ export const Head = ({ pageContext }: TagTemplateProps) => {
   const { tags, currentPage } = pageContext;
   const { title: siteName } = useSiteMetadata();
   if (currentPage === 1) return <title>{`${tags} – ${siteName}`}</title>;
-  return <title>{`${tags} (${currentPage} Page) – ${siteName}`}</title>;
+  return (
+    <title
+      key={`title-tags-${tags}-p${currentPage}`}
+    >{`${tags} (${currentPage} Page) – ${siteName}`}</title>
+  );
 };

@@ -17,5 +17,5 @@ export default ServerErrorPage;
 
 export const Head = () => {
   const { title } = useSiteMetadata();
-  return <title>{`Server Error – ${title}`}</title>;
+  return <title key="title-500">{`Server Error – ${title}`}</title>;
 };

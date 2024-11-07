@@ -37,5 +37,5 @@ export default AboutTemplate;
 
 export const Head = () => {
   const { title } = useSiteMetadata();
-  return <title>{`About – ${title}`}</title>;
+  return <title key="title-about">{`About – ${title}`}</title>;
 };

@@ -32,5 +32,5 @@ export default TagsTemplate;
 
 export const Head = () => {
   const { title: siteName } = useSiteMetadata();
-  return <title>{`Tags – ${siteName}`}</title>;
+  return <title key="title-tags">{`Tags – ${siteName}`}</title>;
 };

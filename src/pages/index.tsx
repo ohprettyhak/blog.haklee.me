@@ -25,7 +25,7 @@ export const query = graphql`
           subtitle
           coverImage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -61,5 +61,5 @@ export default IndexPage;
 
 export const Head = () => {
   const { title } = useSiteMetadata();
-  return <title>{title}</title>;
+  return <title key="title-index">{title}</title>;
 };

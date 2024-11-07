@@ -15,7 +15,7 @@ const ProfileGrid = () => {
     query {
       file(absolutePath: { regex: "/static/assets/images/profile.*/" }) {
         childImageSharp {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
     }

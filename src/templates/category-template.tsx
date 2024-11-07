@@ -27,7 +27,7 @@ export const query = graphql`
           category
           coverImage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -37,7 +37,7 @@ export const query = graphql`
 `;
 
 type CategoryTemplateContext = {
-  category: string;
+  categories: string;
   count: number;
   limit: number;
   skip: number;
@@ -48,18 +48,18 @@ type CategoryTemplateContext = {
 type CategoryTemplateProps = PageProps<Queries.CategoryPostsQuery, CategoryTemplateContext>;
 
 const CategoryTemplate = ({ data, pageContext }: CategoryTemplateProps) => {
-  const { category, count, currentPage, maxPages } = pageContext;
+  const { categories, count, currentPage, maxPages } = pageContext;
 
   return (
     <Layout>
       <h3
         style={{ ...theme.typographies.h3, marginBottom: rem(30), color: theme.colors.gray.light }}
       >
-        Category: {category} ({count})
+        Category: {categories} ({count})
       </h3>
       <PostList posts={data.allMdx.nodes} />
       <Pagination
-        prefix={slugify(`categories/${category}`)}
+        prefix={slugify(`categories/${categories}`)}
         currentPage={currentPage}
         maxPages={maxPages}
       />
@@ -70,8 +70,12 @@ const CategoryTemplate = ({ data, pageContext }: CategoryTemplateProps) => {
 export default CategoryTemplate;
 
 export const Head = ({ pageContext }: CategoryTemplateProps) => {
-  const { category, currentPage } = pageContext;
+  const { categories, currentPage } = pageContext;
   const { title: siteName } = useSiteMetadata();
-  if (currentPage === 1) return <title>{`${category} – ${siteName}`}</title>;
-  return <title>{`${category} (${currentPage} Page) – ${siteName}`}</title>;
+  if (currentPage === 1) return <title>{`${categories} – ${siteName}`}</title>;
+  return (
+    <title
+      key={`title-category-${categories}-p${currentPage}`}
+    >{`${categories} (${currentPage} Page) – ${siteName}`}</title>
+  );
 };

@@ -30,7 +30,7 @@ export const query = graphql`
           subtitle
           coverImage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -53,7 +53,7 @@ export const query = graphql`
           subtitle
           coverImage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -107,7 +107,7 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
 export default PostTemplate;
 
 export const Head = ({ pageContext }: PostTemplateProps) => {
-  const { title } = pageContext;
+  const { slug, title } = pageContext;
   const { title: siteName } = useSiteMetadata();
-  return <title>{`${title} – ${siteName}`}</title>;
+  return <title key={`title-post-${slug}`}>{`${title} – ${siteName}`}</title>;
 };

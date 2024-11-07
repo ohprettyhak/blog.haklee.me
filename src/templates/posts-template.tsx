@@ -26,7 +26,7 @@ export const query = graphql`
           category
           coverImage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -75,5 +75,9 @@ export const Head = ({ pageContext }: PostsTemplateProps) => {
   const { title, currentPage } = pageContext;
   const { title: siteName } = useSiteMetadata();
   if (currentPage === 1) return <title>{`${title} – ${siteName}`}</title>;
-  return <title>{`${title} (${currentPage} Page) – ${siteName}`}</title>;
+  return (
+    <title
+      key={`title-posts-p${currentPage}`}
+    >{`${title} (${currentPage} Page) – ${siteName}`}</title>
+  );
 };

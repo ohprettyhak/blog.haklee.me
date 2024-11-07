@@ -41,7 +41,7 @@ export const PostPageQuery = `
             tag
             coverImage {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }

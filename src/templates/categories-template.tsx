@@ -32,5 +32,5 @@ export default CategoriesTemplate;
 
 export const Head = () => {
   const { title: siteName } = useSiteMetadata();
-  return <title>{`Categories – ${siteName}`}</title>;
+  return <title key="title-category">{`Categories – ${siteName}`}</title>;
 };
