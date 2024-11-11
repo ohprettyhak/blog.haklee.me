@@ -3,7 +3,7 @@ import React from 'react';
 
 import Footer from '@/components/about/Footer';
 import Layout from '@/components/common/Layout';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
+import SEO from '@/components/common/SEO';
 
 export const query = graphql`
   query AboutTemplate {
@@ -35,7 +35,4 @@ const AboutTemplate = ({ data, children }: AboutTemplateProps) => {
 
 export default AboutTemplate;
 
-export const Head = () => {
-  const { title } = useSiteMetadata();
-  return <title key="title-about">{`About – ${title}`}</title>;
-};
+export const Head = () => <SEO title="About" />;

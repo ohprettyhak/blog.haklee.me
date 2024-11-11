@@ -4,10 +4,10 @@ import React from 'react';
 import Layout from '@/components/common/Layout';
 import Pagination from '@/components/common/Pagination';
 import PostList from '@/components/common/PostList';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
 import { theme } from '@/styles/theme.css';
 import { rem } from '@/utils/pxto';
 import { slugify } from '@/utils/slugify';
+import SEO from '@/components/common/SEO';
 
 export const query = graphql`
   query CategoryPosts($categories: String!, $limit: Int!, $skip: Int!) {
@@ -71,11 +71,5 @@ export default CategoryTemplate;
 
 export const Head = ({ pageContext }: CategoryTemplateProps) => {
   const { categories, currentPage } = pageContext;
-  const { title: siteName } = useSiteMetadata();
-  if (currentPage === 1) return <title>{`${categories} – ${siteName}`}</title>;
-  return (
-    <title
-      key={`title-category-${categories}-p${currentPage}`}
-    >{`${categories} (${currentPage} Page) – ${siteName}`}</title>
-  );
+  return <SEO title={`${categories} (${currentPage} Page)`} />;
 };

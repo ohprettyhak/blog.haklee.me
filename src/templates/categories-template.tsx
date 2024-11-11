@@ -3,7 +3,7 @@ import React from 'react';
 
 import Layout from '@/components/common/Layout';
 import MetadataList from '@/components/common/MetadataList';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
+import SEO from '@/components/common/SEO';
 import { theme } from '@/styles/theme.css';
 import { rem } from '@/utils/pxto';
 
@@ -30,7 +30,4 @@ const CategoriesTemplate = ({ pageContext }: CategoriesTemplateProps) => {
 
 export default CategoriesTemplate;
 
-export const Head = () => {
-  const { title: siteName } = useSiteMetadata();
-  return <title key="title-category">{`Categories – ${siteName}`}</title>;
-};
+export const Head = () => <SEO title="Categories" />;

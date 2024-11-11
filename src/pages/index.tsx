@@ -4,8 +4,8 @@ import React from 'react';
 
 import Layout from '@/components/common/Layout';
 import PostGrid from '@/components/common/PostGrid';
+import SEO from '@/components/common/SEO';
 import ProfileGrid from '@/components/index/ProfileGrid';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
 
 import * as styles from '../styles/pages.css';
 
@@ -59,7 +59,4 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
 export default IndexPage;
 
-export const Head = () => {
-  const { title } = useSiteMetadata();
-  return <title key="title-index">{title}</title>;
-};
+export const Head = () => <SEO />;

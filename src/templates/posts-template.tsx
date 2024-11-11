@@ -4,7 +4,7 @@ import React from 'react';
 import Layout from '@/components/common/Layout';
 import Pagination from '@/components/common/Pagination';
 import PostList from '@/components/common/PostList';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
+import SEO from '@/components/common/SEO';
 import { theme } from '@/styles/theme.css';
 import { rem } from '@/utils/pxto';
 
@@ -73,11 +73,5 @@ export default PostsTemplate;
 
 export const Head = ({ pageContext }: PostsTemplateProps) => {
   const { title, currentPage } = pageContext;
-  const { title: siteName } = useSiteMetadata();
-  if (currentPage === 1) return <title>{`${title} – ${siteName}`}</title>;
-  return (
-    <title
-      key={`title-posts-p${currentPage}`}
-    >{`${title} (${currentPage} Page) – ${siteName}`}</title>
-  );
+  return <SEO title={`${title} (${currentPage} Page)`} />;
 };

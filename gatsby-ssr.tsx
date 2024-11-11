@@ -58,12 +58,6 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
       crossOrigin="anonymous"
       key="pretendardFont"
     />,
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" key="svgFavicon" />,
-    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png" key="pngFavicon" />,
-    <meta property="og:image" content="/assets/images/thumbnail.png" key="ogImage" />,
-    <meta property="og:image:alt" content="semantic" key="ogImageAlt" />,
-    <meta name="twitter:image" content="/assets/images/thumbnail.png" key="twitterImage" />,
-    <meta name="twitter:image:alt" content="semantic" key="twitterImageAlt" />,
   ]);
 
   setPreBodyComponents([

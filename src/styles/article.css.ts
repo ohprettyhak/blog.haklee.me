@@ -92,3 +92,28 @@ globalStyle('article ul, article ol', {
 globalStyle('article ul li, article ol li', {
   marginBottom: rem(8),
 });
+
+globalStyle('article p > code', {
+  paddingBlock: rem(2),
+  paddingInline: rem(4),
+  fontFamily: theme.fonts.mono,
+  fontSize: rem(14.5),
+  lineHeight: 1.3,
+  backgroundColor: theme.colors.border,
+  borderRadius: rem(8),
+});
+
+globalStyle('article p > code::before', {
+  content: '`',
+});
+
+globalStyle('article p > code::after', {
+  content: '`',
+});
+
+globalStyle('article div[data-markdown-alert] > p', {
+  padding: 0,
+  margin: 0,
+  fontFamily: theme.fonts.mono,
+  fontSize: rem(14.5),
+});

@@ -4,7 +4,7 @@ import React from 'react';
 import Layout from '@/components/common/Layout';
 import Pagination from '@/components/common/Pagination';
 import PostList from '@/components/common/PostList';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
+import SEO from '@/components/common/SEO';
 import { theme } from '@/styles/theme.css';
 import { rem } from '@/utils/pxto';
 import { slugify } from '@/utils/slugify';
@@ -67,11 +67,5 @@ export default TagTemplate;
 
 export const Head = ({ pageContext }: TagTemplateProps) => {
   const { tags, currentPage } = pageContext;
-  const { title: siteName } = useSiteMetadata();
-  if (currentPage === 1) return <title>{`${tags} – ${siteName}`}</title>;
-  return (
-    <title
-      key={`title-tags-${tags}-p${currentPage}`}
-    >{`${tags} (${currentPage} Page) – ${siteName}`}</title>
-  );
+  return <SEO title={`${tags} (${currentPage} Page)`} />;
 };

@@ -174,6 +174,19 @@ export const colors = createThemeContract({
   gradient: {
     sidebar_divider: '--semantic-gradient-sidebar-divider',
   },
+
+  mdx: {
+    note: '--semantic-mdx-note',
+    noteBackground: '--semantic-mdx-note-background',
+    tip: '--semantic-mdx-tip',
+    tipBackground: '--semantic-mdx-tip-background',
+    important: '--semantic-mdx-important',
+    importantBackground: '--semantic-mdx-important-background',
+    warning: '--semantic-mdx-warning',
+    warningBackground: '--semantic-mdx-warning-background',
+    caution: '--semantic-mdx-caution',
+    cautionBackground: '--semantic-mdx-caution-background',
+  },
 });
 
 export const lightColors = createTheme(colors, {
@@ -202,6 +215,19 @@ export const lightColors = createTheme(colors, {
   gradient: {
     sidebar_divider: 'radial-gradient(circle, #D9DBE7 0%, rgba(217, 219, 231, 0) 100%)',
   },
+
+  mdx: {
+    note: '#2e67d3',
+    noteBackground: '#f7fbff',
+    tip: '#2e67d3',
+    tipBackground: '#f7fbff',
+    important: '#7b52d7',
+    importantBackground: '#fbf7ff',
+    warning: '#936921',
+    warningBackground: '#fffdf7',
+    caution: '#be3536',
+    cautionBackground: '#fffafa',
+  },
 });
 
 export const darkColors = createTheme(colors, {
@@ -229,6 +255,19 @@ export const darkColors = createTheme(colors, {
 
   gradient: {
     sidebar_divider: 'radial-gradient(circle, #36363A 0%, rgba(61, 61, 67, 0) 100%)',
+  },
+
+  mdx: {
+    note: '#386de3',
+    noteBackground: '#14151d',
+    tip: '#386de3',
+    tipBackground: '#14151d',
+    important: '#8259dd',
+    importantBackground: '#1a1026',
+    warning: '#966c23',
+    warningBackground: '#1a1612',
+    caution: '#c9453c',
+    cautionBackground: '#1a0f0f',
   },
 });
 

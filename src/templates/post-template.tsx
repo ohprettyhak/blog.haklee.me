@@ -5,10 +5,10 @@ import React from 'react';
 import BackButton from '@/components/common/BackButton';
 import Divider from '@/components/common/Divider';
 import Layout from '@/components/common/Layout';
+import SEO from '@/components/common/SEO';
 import Footer from '@/components/post/Footer';
 import Header from '@/components/post/Header';
 import Recommend from '@/components/post/Recommend';
-import { useSiteMetadata } from '@/hooks/useSiteMetadata';
 import { rem } from '@/utils/pxto';
 
 export const query = graphql`
@@ -107,7 +107,6 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
 export default PostTemplate;
 
 export const Head = ({ pageContext }: PostTemplateProps) => {
-  const { slug, title } = pageContext;
-  const { title: siteName } = useSiteMetadata();
-  return <title key={`title-post-${slug}`}>{`${title} – ${siteName}`}</title>;
+  const { title, subtitle } = pageContext;
+  return <SEO title={title} description={subtitle} />;
 };
