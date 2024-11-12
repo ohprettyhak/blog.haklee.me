@@ -10,11 +10,11 @@ import * as styles from './styles.css';
 type HeaderProps = {
   coverImage?: IGatsbyImageData;
   title: string;
-  date: string;
+  publishDate: string;
   category?: string | null;
 };
 
-const Header = ({ coverImage, title, date, category }: HeaderProps) => {
+const Header = ({ coverImage, title, publishDate, category }: HeaderProps) => {
   return (
     <header className={styles.root}>
       <div className={styles.cover}>
@@ -24,7 +24,7 @@ const Header = ({ coverImage, title, date, category }: HeaderProps) => {
       </div>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.description}>
-        {formatDate(date)}
+        {formatDate(publishDate)}
         {category && (
           <Fragment>
             <span className={styles.middot}>&nbsp;&middot;&nbsp;</span>

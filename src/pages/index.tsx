@@ -13,13 +13,16 @@ export const query = graphql`
   query LatestPosts {
     allMdx(
       limit: 4
-      sort: { frontmatter: { date: DESC } }
-      filter: { internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } } }
+      sort: { frontmatter: { publishDate: DESC } }
+      filter: {
+        internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } }
+        frontmatter: { draft: { nin: true } }
+      }
     ) {
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle

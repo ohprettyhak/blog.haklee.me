@@ -7,13 +7,13 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, getNodes
   const mdxNodes = getNodesByType('Mdx');
 
   mdxNodes.forEach(node => {
-    const mdxNode = node as { frontmatter?: { date?: string } };
+    const mdxNode = node as { frontmatter?: { publishDate: string } };
 
-    if (mdxNode.frontmatter?.date) {
+    if (mdxNode.frontmatter?.publishDate) {
       createNodeField({
         name: 'timestamp',
         node,
-        value: dayjs(mdxNode.frontmatter.date).unix(),
+        value: dayjs(mdxNode.frontmatter.publishDate).unix(),
       });
     }
   });

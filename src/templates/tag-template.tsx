@@ -12,15 +12,15 @@ import { slugify } from '@/utils/slugify';
 export const query = graphql`
   query TagPosts($tags: [String!], $limit: Int!, $skip: Int!) {
     allMdx(
-      filter: { frontmatter: { tag: { in: $tags } } }
+      filter: { frontmatter: { tag: { in: $tags }, draft: { nin: true } } }
       limit: $limit
-      sort: { frontmatter: { date: DESC } }
+      sort: { frontmatter: { publishDate: DESC } }
       skip: $skip
     ) {
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle

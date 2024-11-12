@@ -17,6 +17,7 @@ export const query = graphql`
       filter: {
         fields: { timestamp: { lt: $timestamp } }
         internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } }
+        frontmatter: { draft: { nin: true } }
       }
       sort: { fields: { timestamp: DESC } }
       limit: 4
@@ -24,7 +25,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle
@@ -40,6 +41,7 @@ export const query = graphql`
       filter: {
         fields: { timestamp: { gt: $timestamp } }
         internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } }
+        frontmatter: { draft: { nin: true } }
       }
       sort: { fields: { timestamp: ASC } }
       limit: 4
@@ -47,7 +49,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle
@@ -67,16 +69,19 @@ type PostPageContext = {
   slug: string;
   title: string;
   subtitle: string;
-  date: string;
+  publishDate: string;
+  modifiedDate?: string;
   category: string;
   tags: string[];
-  coverImage: IGatsbyImageData | undefined;
+  draft?: boolean;
+  coverImage?: IGatsbyImageData;
+  coverImageUrl?: string;
 };
 
 type PostTemplateProps = PageProps<Queries.RecommendPostsQuery, PostPageContext>;
 
 const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
-  const { slug, title, subtitle, date, category, coverImage } = pageContext;
+  const { slug, title, subtitle, publishDate, category, coverImage } = pageContext;
   const { previous, next } = data;
 
   let recommendedPosts = [...next.nodes.slice(0, 2), ...previous.nodes.slice(0, 2)];
@@ -92,7 +97,12 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
       <BackButton />
 
       <article>
-        <Header coverImage={coverImage} title={title} date={date} category={category} />
+        <Header
+          coverImage={coverImage}
+          title={title}
+          publishDate={publishDate}
+          category={category}
+        />
         <div data-content={true}>{children}</div>
         <Divider style={{ height: rem(1), marginBlock: rem(55) }} />
         <Footer slug={slug} title={title} subtitle={subtitle} />
@@ -107,6 +117,19 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
 export default PostTemplate;
 
 export const Head = ({ pageContext }: PostTemplateProps) => {
-  const { title, subtitle } = pageContext;
-  return <SEO title={title} description={subtitle} />;
+  const { slug, title, subtitle, coverImageUrl, publishDate, modifiedDate, tags, draft } =
+    pageContext;
+
+  return (
+    <SEO
+      slug={slug}
+      title={title}
+      description={subtitle}
+      image={coverImageUrl}
+      publishDate={publishDate}
+      modifiedDate={modifiedDate}
+      keywords={tags}
+      draft={draft}
+    />
+  );
 };

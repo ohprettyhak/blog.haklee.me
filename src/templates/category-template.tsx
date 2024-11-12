@@ -4,23 +4,23 @@ import React from 'react';
 import Layout from '@/components/common/Layout';
 import Pagination from '@/components/common/Pagination';
 import PostList from '@/components/common/PostList';
+import SEO from '@/components/common/SEO';
 import { theme } from '@/styles/theme.css';
 import { rem } from '@/utils/pxto';
 import { slugify } from '@/utils/slugify';
-import SEO from '@/components/common/SEO';
 
 export const query = graphql`
   query CategoryPosts($categories: String!, $limit: Int!, $skip: Int!) {
     allMdx(
-      filter: { frontmatter: { category: { eq: $categories } } }
+      filter: { frontmatter: { category: { eq: $categories }, draft: { nin: true } } }
       limit: $limit
-      sort: { frontmatter: { date: DESC } }
+      sort: { frontmatter: { publishDate: DESC } }
       skip: $skip
     ) {
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle

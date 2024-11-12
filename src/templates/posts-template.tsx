@@ -11,15 +11,18 @@ import { rem } from '@/utils/pxto';
 export const query = graphql`
   query PostList($limit: Int!, $skip: Int!) {
     allMdx(
-      sort: { frontmatter: { date: DESC } }
+      sort: { frontmatter: { publishDate: DESC } }
       limit: $limit
       skip: $skip
-      filter: { internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } } }
+      filter: {
+        internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } }
+        frontmatter: { draft: { nin: true } }
+      }
     ) {
       nodes {
         id
         frontmatter {
-          date
+          publishDate
           slug
           title
           subtitle
@@ -33,7 +36,10 @@ export const query = graphql`
       }
     }
     count: allMdx(
-      filter: { internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } } }
+      filter: {
+        internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } }
+        frontmatter: { draft: { nin: true } }
+      }
     ) {
       totalCount
     }

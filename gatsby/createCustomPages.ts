@@ -3,7 +3,7 @@ import { GatsbyNode } from 'gatsby';
 
 import { AboutPageQuery, AboutPageQueryType } from './_queries/about';
 import { PostPageQuery, PostPageQueryType } from './_queries/post';
-import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { getImage, getSrc, IGatsbyImageData } from 'gatsby-plugin-image';
 import { generatePaginatedPage, generateMetadataPages } from './_utils/page-generator';
 
 const templates = {
@@ -36,17 +36,26 @@ export const createCustomPages: GatsbyNode['createPages'] = async ({
   const tags = new Map<string, number>();
 
   posts.forEach(({ frontmatter, fields, internal }) => {
-    const { slug, category, tag, coverImage } = frontmatter;
+    const { slug, category, tag, coverImage, draft } = frontmatter;
     const cover: IGatsbyImageData | undefined = getImage(
       coverImage?.childImageSharp?.gatsbyImageData || null,
     );
 
+    const coverImageUrl = coverImage?.childImageSharp ? getSrc(coverImage.childImageSharp) : null;
+
     createPage({
       path: `/posts/${slug}`,
       component: `${templates.post}?__contentFilePath=${internal.contentFilePath}`,
-      context: { ...frontmatter, tags: tag ?? [], coverImage: cover, timestamp: fields.timestamp },
+      context: {
+        ...frontmatter,
+        tags: tag ?? [],
+        coverImage: cover,
+        coverImageUrl,
+        timestamp: fields.timestamp,
+      },
     });
 
+    if (draft) return;
     if (category) categories.set(category, (categories.get(category) || 0) + 1);
     tag?.forEach(t => tags.set(t, (tags.get(t) || 0) + 1));
   });

@@ -32,7 +32,7 @@ const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
               )}
             </div>
             <h2 className={styles.title}>{frontmatter?.title}</h2>
-            <p className={styles.description}>{formatDate(frontmatter?.date || '')}</p>
+            <p className={styles.description}>{formatDate(frontmatter?.publishDate || '')}</p>
           </Link>
         );
       })}

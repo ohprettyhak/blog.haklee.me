@@ -4,4 +4,5 @@ export const metadata = {
   description: `Hak Lee's Reflective Space`,
   siteUrl: `https://blog.haklee.me`,
   email: 'me@haklee.me',
+  thumbnail: '/assets/images/thumbnail.png',
 };

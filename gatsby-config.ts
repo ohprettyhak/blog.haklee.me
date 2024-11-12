@@ -5,7 +5,9 @@ import { metadata } from './src/constants/metadata';
 
 const config: GatsbyConfig = {
   siteMetadata: metadata,
-  graphqlTypegen: true,
+  graphqlTypegen: {
+    typesOutputPath: `./src/__generated__/gatsby-types.d.ts`,
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-vanilla-extract`,
@@ -43,16 +45,12 @@ const config: GatsbyConfig = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
+          'gatsby-remark-codeblock',
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 757,
             },
-          },
-          'gatsby-remark-code-buttons',
-          {
-            resolve: 'gatsby-remark-code-titles',
-            options: {},
           },
           {
             resolve: 'gatsby-remark-prismjs',

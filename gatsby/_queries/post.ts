@@ -3,55 +3,65 @@ import { IGatsbyImageData } from 'gatsby-plugin-image';
 export type PostPageQueryType = {
   allMdx: {
     nodes: {
-      id: string;
+      fields: {
+        timestamp: number;
+      };
       frontmatter: {
-        title: string;
-        subtitle: string;
-        slug: string;
-        date: string;
         category?: string;
-        tag?: string[];
         coverImage: {
           childImageSharp: {
             gatsbyImageData: IGatsbyImageData;
           } | null;
         } | null;
+        draft?: boolean;
+        modifiedDate?: string;
+        publishDate: string;
+        slug: string;
+        subtitle: string;
+        tag?: string[];
+        title: string;
       };
+      id: string;
       internal: {
         contentFilePath: string;
-      };
-      fields: {
-        timestamp: number;
       };
     }[];
   };
 };
 
 export const PostPageQuery = `
-    query GetAllMdxPosts {
-      allMdx(filter: { internal: { contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" } } }) {
-        nodes {
-          id
-          frontmatter {
-            title
-            subtitle
-            slug
-            date
-            category
-            tag
-            coverImage {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED)
-              }
+  query GetAllMdxPosts {
+    allMdx(
+      filter: {
+        internal: {
+          contentFilePath: { regex: "/^(.*/content/posts/)(.*)$/" }
+        }
+      }
+    ) {
+      nodes {
+        id
+        fields {
+          timestamp
+        }
+        frontmatter {
+          category
+          coverImage {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
-          internal {
-            contentFilePath
-          }
-          fields {
-            timestamp
-          }
+          draft
+          modifiedDate
+          publishDate
+          slug
+          subtitle
+          tag
+          title
+        }
+        internal {
+          contentFilePath
         }
       }
     }
-  `;
+  }
+`;

@@ -11,7 +11,10 @@ export const createCustomSchema: GatsbyNode['createSchemaCustomization'] = ({ ac
 
     type MdxFrontmatter {
       category: String
+      draft: Boolean
       tag: [String]
+      publishDate: String
+      modifiedDate: String
     }
 
     type MdxFields {

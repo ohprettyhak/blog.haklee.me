@@ -41,7 +41,7 @@ const PostList = ({ posts, className, ...props }: PostListProps) => {
                 <h2 className={styles.title}>{frontmatter?.title}</h2>
                 <p className={styles.subtitle}>{frontmatter?.subtitle}</p>
                 <p className={styles.description}>
-                  {formatDate(frontmatter?.date || '')}
+                  {formatDate(frontmatter?.publishDate || '')}
                   {frontmatter?.category && (
                     <Fragment>
                       <span className={styles.middot}>&nbsp;&middot;&nbsp;</span>
