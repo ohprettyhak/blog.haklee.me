@@ -1,0 +1,48 @@
+.codeblock-copy-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@keyframes fade-in-and-out {
+    0% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    16% {
+        opacity: 1;
+        transform: none;
+    }
+    84% {
+        opacity: 1;
+        transform: none;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+}
+
+.codeblock-copy-toast-message {
+    padding-block: 12px;
+    padding-inline: 36px;
+    border-radius: 8px;
+
+    color: white;
+    font-family: "Roboto Mono", "Pretendard Variable", "Courier New", Courier, monospace;
+    font-size: 15px;
+
+    background-color: #7995AD;
+    animation: fade-in-and-out 2s both;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] .codeblock-copy-toast-message {
+    background-color: #1C262F;
+}

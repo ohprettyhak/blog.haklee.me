@@ -184,7 +184,6 @@ dist
 *.asp
 *.cer
 *.csr
-*.css
 *.htm
 *.html
 *.jsp
