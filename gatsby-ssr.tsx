@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import { GatsbySSR } from 'gatsby';
-import { createElement } from 'react';
 
 import { darkColors, lightColors } from '@/styles/theme.css';
 

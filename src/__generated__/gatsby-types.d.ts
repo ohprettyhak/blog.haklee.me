@@ -1598,10 +1598,9 @@ type MdxFilterListInput = {
 type MdxFrontmatter = {
   readonly category: Maybe<Scalars['String']>;
   readonly coverImage: Maybe<File>;
-  readonly date: Maybe<Scalars['Date']>;
   readonly draft: Maybe<Scalars['Boolean']>;
-  readonly modifiedDate: Maybe<Scalars['String']>;
-  readonly publishDate: Maybe<Scalars['String']>;
+  readonly modifiedDate: Maybe<Scalars['Date']>;
+  readonly publishDate: Maybe<Scalars['Date']>;
   readonly slug: Maybe<Scalars['String']>;
   readonly subtitle: Maybe<Scalars['String']>;
   readonly tag: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -1609,7 +1608,15 @@ type MdxFrontmatter = {
 };
 
 
-type MdxFrontmatter_dateArgs = {
+type MdxFrontmatter_modifiedDateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type MdxFrontmatter_publishDateArgs = {
   difference: InputMaybe<Scalars['String']>;
   formatString: InputMaybe<Scalars['String']>;
   fromNow: InputMaybe<Scalars['Boolean']>;
@@ -1619,7 +1626,6 @@ type MdxFrontmatter_dateArgs = {
 type MdxFrontmatterFieldSelector = {
   readonly category: InputMaybe<FieldSelectorEnum>;
   readonly coverImage: InputMaybe<FileFieldSelector>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
   readonly draft: InputMaybe<FieldSelectorEnum>;
   readonly modifiedDate: InputMaybe<FieldSelectorEnum>;
   readonly publishDate: InputMaybe<FieldSelectorEnum>;
@@ -1632,10 +1638,9 @@ type MdxFrontmatterFieldSelector = {
 type MdxFrontmatterFilterInput = {
   readonly category: InputMaybe<StringQueryOperatorInput>;
   readonly coverImage: InputMaybe<FileFilterInput>;
-  readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly draft: InputMaybe<BooleanQueryOperatorInput>;
-  readonly modifiedDate: InputMaybe<StringQueryOperatorInput>;
-  readonly publishDate: InputMaybe<StringQueryOperatorInput>;
+  readonly modifiedDate: InputMaybe<DateQueryOperatorInput>;
+  readonly publishDate: InputMaybe<DateQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly subtitle: InputMaybe<StringQueryOperatorInput>;
   readonly tag: InputMaybe<StringQueryOperatorInput>;
@@ -1645,7 +1650,6 @@ type MdxFrontmatterFilterInput = {
 type MdxFrontmatterSortInput = {
   readonly category: InputMaybe<SortOrderEnum>;
   readonly coverImage: InputMaybe<FileSortInput>;
-  readonly date: InputMaybe<SortOrderEnum>;
   readonly draft: InputMaybe<SortOrderEnum>;
   readonly modifiedDate: InputMaybe<SortOrderEnum>;
   readonly publishDate: InputMaybe<SortOrderEnum>;
@@ -2907,7 +2911,7 @@ type WebPOptions = {
 type AboutTemplateQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AboutTemplateQuery = { readonly mdx: { readonly frontmatter: { readonly date: string | null } | null } | null };
+type AboutTemplateQuery = { readonly mdx: { readonly frontmatter: { readonly publishDate: string | null } | null } | null };
 
 type CategoryPostsQueryVariables = Exact<{
   categories: Scalars['String'];

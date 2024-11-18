@@ -13,8 +13,8 @@ export const createCustomSchema: GatsbyNode['createSchemaCustomization'] = ({ ac
       category: String
       draft: Boolean
       tag: [String]
-      publishDate: String
-      modifiedDate: String
+      publishDate: Date @dateformat
+      modifiedDate: Date @dateformat
     }
 
     type MdxFields {

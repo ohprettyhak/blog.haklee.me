@@ -9,7 +9,7 @@ export const query = graphql`
   query AboutTemplate {
     mdx(internal: { contentFilePath: { regex: "/content/pages/about.mdx$/" } }) {
       frontmatter {
-        date
+        publishDate(formatString: "MMMM DD, YYYY")
       }
     }
   }
@@ -22,13 +22,14 @@ const AboutTemplate = ({ data, children }: AboutTemplateProps) => {
   if (!mdx) return null;
 
   const { frontmatter } = mdx;
+  if (!frontmatter) return null;
 
   return (
     <Layout>
       <article>
         <div data-content={true}>{children}</div>
       </article>
-      <Footer date={frontmatter?.date ?? '-'} />
+      <Footer date={frontmatter.publishDate ?? '-'} />
     </Layout>
   );
 };
