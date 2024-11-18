@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { clsx } from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import React, { ReactNode, useState } from 'react';
 import { createPortal } from 'react-dom';
 

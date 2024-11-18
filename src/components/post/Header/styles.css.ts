@@ -10,19 +10,30 @@ export const root = style({
 
 export const cover = style({
   ...theme.layouts.center,
+  backgroundColor: theme.colors.border,
+  userSelect: 'none',
+});
+
+globalStyle(`${cover} div[data-gatsby-image-wrapper]`, {
   width: '100%',
   aspectRatio: '1.8 / 1',
   borderRadius: rem(14),
-  backgroundColor: theme.colors.border,
-  userSelect: 'none',
   overflow: 'hidden',
 });
 
 export const title = style({
   ...theme.typographies.post_title,
+  padding: 0,
   marginTop: rem(17),
   color: theme.colors.gray.accent,
   wordBreak: 'keep-all',
+});
+
+export const subtitle = style({
+  ...theme.typographies.post_subtitle,
+  padding: 0,
+  marginTop: rem(8),
+  color: theme.colors.gray.bold,
 });
 
 export const description = style({

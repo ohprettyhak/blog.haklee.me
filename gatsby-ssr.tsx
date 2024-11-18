@@ -12,7 +12,6 @@ const colorThemeScript = `
       preferredTheme = newTheme;
       document.documentElement.setAttribute('data-theme', newTheme);
       document.documentElement.className = newTheme === 'dark' ? '${darkColors}' : '${lightColors}';
-      document.documentElement.setAttribute("data-color-scheme", newTheme === 'dark' ? "dark" : "light");
       window.__onThemeChange(newTheme);
     }
     var preferredTheme;

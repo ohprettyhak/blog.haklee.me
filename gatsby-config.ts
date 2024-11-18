@@ -1,5 +1,6 @@
 import type { GatsbyConfig } from 'gatsby';
 import remarkGfm from 'remark-gfm';
+import remarkBlockquoteAlerts from 'remark-blockquote-alerts';
 
 import { metadata } from './src/constants/metadata';
 
@@ -60,7 +61,7 @@ const config: GatsbyConfig = {
           },
         ],
         mdxOptions: {
-          remarkPlugins: [remarkGfm],
+          remarkPlugins: [remarkGfm, remarkBlockquoteAlerts],
         },
       },
     },

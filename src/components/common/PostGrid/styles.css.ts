@@ -21,12 +21,16 @@ export const container = style({
 
 export const cover = style({
   width: '100%',
-  aspectRatio: '1.8 / 1',
-  borderRadius: rem(14),
-  backgroundColor: theme.colors.border,
   userSelect: 'none',
   overflow: 'hidden',
-  transition: 'filter 0.3s ease',
+});
+
+globalStyle(`${cover} > div[data-gatsby-image-wrapper]`, {
+  width: '100%',
+  aspectRatio: '1.8 / 1',
+  borderRadius: rem(14),
+  overflow: 'hidden',
+  transition: 'filter 0.3s',
 });
 
 export const title = style({
@@ -59,9 +63,12 @@ export const description = style({
   transition: 'background-color 0.3s ease',
 });
 
-globalStyle(`${container}:hover ${cover}, ${container}:active ${cover}`, {
-  filter: 'brightness(1.3)',
-});
+globalStyle(
+  `${container}:hover ${cover} > div[data-gatsby-image-wrapper], ${container}:active ${cover} > div[data-gatsby-image-wrapper]`,
+  {
+    filter: 'brightness(1.2)',
+  },
+);
 
 globalStyle(`${container}:hover ${title}`, {
   backgroundColor: theme.colors.gray.hover,

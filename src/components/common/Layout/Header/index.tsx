@@ -1,7 +1,7 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import dayjs from 'dayjs';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
+import { AnimatePresence, motion } from 'motion/react';
 import React, { Fragment, useState } from 'react';
 
 import { useSiteMetadata } from '@/hooks/useSiteMetadata';

@@ -13,20 +13,25 @@ export const list = style({
 export const item = style({
   ...theme.layouts.column,
   gap: rem(18),
+  cursor: 'pointer',
 
   ...breakpoint({ tablet: { flexDirection: 'row', gap: rem(35) } }),
 });
 
 export const cover = style({
   width: '100%',
-  aspectRatio: '1.8 / 1',
-  borderRadius: rem(14),
-  backgroundColor: theme.colors.border,
   userSelect: 'none',
   overflow: 'hidden',
-  transition: 'filter 0.3s ease',
 
   ...breakpoint({ tablet: { width: rem(346) } }),
+});
+
+globalStyle(`${cover} div[data-gatsby-image-wrapper]`, {
+  width: '100%',
+  aspectRatio: '1.8 / 1',
+  borderRadius: rem(14),
+  overflow: 'hidden',
+  transition: 'filter 0.3s',
 });
 
 export const frontmatter = style({
@@ -79,30 +84,33 @@ export const middot = style({
   color: theme.colors.gray.bold,
 });
 
-globalStyle(`${item}:hover ${cover}, ${item}:active ${cover}`, {
-  filter: 'brightness(1.3)',
-});
+globalStyle(
+  `${item}:hover ${cover} div[data-gatsby-image-wrapper], ${item}:active ${cover} div[data-gatsby-image-wrapper]`,
+  {
+    filter: 'brightness(1.2)',
+  },
+);
 
-globalStyle(`${frontmatter}:hover ${title}`, {
+globalStyle(`${item}:hover ${title}`, {
   backgroundColor: theme.colors.gray.hover,
 });
 
-globalStyle(`${frontmatter}:hover ${subtitle}`, {
+globalStyle(`${item}:hover ${subtitle}`, {
   backgroundColor: theme.colors.gray.hover,
 });
 
-globalStyle(`${frontmatter}:hover ${description}`, {
+globalStyle(`${item}:hover ${description}`, {
   backgroundColor: theme.colors.gray.hover,
 });
 
-globalStyle(`${frontmatter}:active ${title}`, {
+globalStyle(`${item}:active ${title}`, {
   backgroundColor: theme.colors.border,
 });
 
-globalStyle(`${frontmatter}:active ${subtitle}`, {
+globalStyle(`${item}:active ${subtitle}`, {
   backgroundColor: theme.colors.border,
 });
 
-globalStyle(`${frontmatter}:active ${description}`, {
+globalStyle(`${item}:active ${description}`, {
   backgroundColor: theme.colors.border,
 });

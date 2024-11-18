@@ -96,10 +96,11 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
     <Layout>
       <BackButton />
 
-      <article>
+      <article data-animate={true}>
         <Header
           coverImage={coverImage}
           title={title}
+          subtitle={subtitle}
           publishDate={publishDate}
           category={category}
         />
