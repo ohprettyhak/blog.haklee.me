@@ -84,12 +84,12 @@ export const createCustomPages: GatsbyNode['createPages'] = async ({
   }
 
   if (aboutQueryResult.data?.mdx) {
-    const { id, internal } = aboutQueryResult.data.mdx;
+    const { id, internal, frontmatter } = aboutQueryResult.data.mdx;
 
     createPage({
       path: `/about`,
       component: `${templates.about}?__contentFilePath=${internal.contentFilePath}`,
-      context: { id },
+      context: { id, ...frontmatter },
     });
   }
 

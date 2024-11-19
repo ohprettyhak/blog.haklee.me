@@ -39,6 +39,7 @@ export const subtitle = style({
 export const description = style({
   ...theme.layouts.centerY,
   ...theme.typographies.h5,
+  padding: 0,
   marginTop: rem(18),
   color: theme.colors.gray.light,
   wordBreak: 'keep-all',

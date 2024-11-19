@@ -11,7 +11,7 @@ import { rem } from '@/utils/pxto';
 export const query = graphql`
   query PostList($limit: Int!, $skip: Int!) {
     allMdx(
-      sort: { frontmatter: { publishDate: DESC } }
+      sort: { fields: { timestamp: DESC } }
       limit: $limit
       skip: $skip
       filter: {
@@ -22,7 +22,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
-          publishDate
+          createdAt(formatString: "MMMM DD, YYYY")
           slug
           title
           subtitle

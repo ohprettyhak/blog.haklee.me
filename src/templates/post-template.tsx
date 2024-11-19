@@ -25,7 +25,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
-          publishDate
+          createdAt(formatString: "MMMM DD, YYYY")
           slug
           title
           subtitle
@@ -49,7 +49,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
-          publishDate
+          createdAt(formatString: "MMMM DD, YYYY")
           slug
           title
           subtitle
@@ -69,8 +69,8 @@ type PostPageContext = {
   slug: string;
   title: string;
   subtitle: string;
-  publishDate: string;
-  modifiedDate?: string;
+  createdAt: string;
+  modifiedAt?: string;
   category: string;
   tags: string[];
   draft?: boolean;
@@ -81,7 +81,7 @@ type PostPageContext = {
 type PostTemplateProps = PageProps<Queries.RecommendPostsQuery, PostPageContext>;
 
 const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
-  const { slug, title, subtitle, publishDate, category, coverImage } = pageContext;
+  const { slug, title, subtitle, createdAt, category, coverImage } = pageContext;
   const { previous, next } = data;
 
   let recommendedPosts = [...next.nodes.slice(0, 2), ...previous.nodes.slice(0, 2)];
@@ -101,7 +101,7 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
           coverImage={coverImage}
           title={title}
           subtitle={subtitle}
-          publishDate={publishDate}
+          createdAt={createdAt}
           category={category}
         />
         <div data-content={true}>{children}</div>
@@ -118,8 +118,7 @@ const PostTemplate = ({ data, pageContext, children }: PostTemplateProps) => {
 export default PostTemplate;
 
 export const Head = ({ pageContext }: PostTemplateProps) => {
-  const { slug, title, subtitle, coverImageUrl, publishDate, modifiedDate, tags, draft } =
-    pageContext;
+  const { slug, title, subtitle, coverImageUrl, createdAt, modifiedAt, tags, draft } = pageContext;
 
   return (
     <SEO
@@ -127,8 +126,8 @@ export const Head = ({ pageContext }: PostTemplateProps) => {
       title={title}
       description={subtitle}
       image={coverImageUrl}
-      publishDate={publishDate}
-      modifiedDate={modifiedDate}
+      publishDate={createdAt}
+      modifiedDate={modifiedAt}
       keywords={tags}
       draft={draft}
     />

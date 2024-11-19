@@ -3,8 +3,6 @@ import { Link } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { ComponentProps, Fragment } from 'react';
 
-import { formatDate } from '@/utils/date';
-
 import * as styles from './styles.css';
 
 type PostListProps = ComponentProps<'ul'> & {
@@ -41,7 +39,7 @@ const PostList = ({ posts, className, ...props }: PostListProps) => {
                 <h2 className={styles.title}>{frontmatter?.title}</h2>
                 <p className={styles.subtitle}>{frontmatter?.subtitle}</p>
                 <p className={styles.description}>
-                  {formatDate(frontmatter?.publishDate || '')}
+                  {frontmatter?.createdAt}
                   {frontmatter?.category && (
                     <Fragment>
                       <span className={styles.middot}>&nbsp;&middot;&nbsp;</span>

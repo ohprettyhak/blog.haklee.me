@@ -4,6 +4,9 @@ export type AboutPageQueryType = {
     internal: {
       contentFilePath: string;
     };
+    frontmatter: {
+      createdAt: string;
+    };
   };
 };
 
@@ -13,6 +16,9 @@ export const AboutPageQuery = `
         id
         internal {
           contentFilePath
+        }
+        frontmatter {
+          createdAt(formatString: "MMMM DD, YYYY")
         }
       }
     }
