@@ -14,13 +14,13 @@ export const query = graphql`
     allMdx(
       filter: { frontmatter: { category: { eq: $categories }, draft: { nin: true } } }
       limit: $limit
-      sort: { frontmatter: { publishDate: DESC } }
+      sort: { fields: { timestamp: DESC } }
       skip: $skip
     ) {
       nodes {
         id
         frontmatter {
-          publishDate
+          createdAt(formatString: "MMMM DD, YYYY")
           slug
           title
           subtitle

@@ -14,8 +14,8 @@ export type PostPageQueryType = {
           } | null;
         } | null;
         draft?: boolean;
-        modifiedDate?: string;
-        publishDate: string;
+        modifiedAt?: string;
+        createdAt: string;
         slug: string;
         subtitle: string;
         tag?: string[];
@@ -51,8 +51,8 @@ export const PostPageQuery = `
             }
           }
           draft
-          modifiedDate
-          publishDate
+          modifiedAt(formatString: "MMMM DD, YYYY")
+          createdAt(formatString: "MMMM DD, YYYY")
           slug
           subtitle
           tag

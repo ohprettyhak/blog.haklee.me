@@ -3,8 +3,6 @@ import { Link } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { ComponentProps } from 'react';
 
-import { formatDate } from '@/utils/date';
-
 import * as styles from './styles.css';
 
 type PostGridProps = ComponentProps<'div'> & {
@@ -32,7 +30,7 @@ const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
               )}
             </div>
             <h2 className={styles.title}>{frontmatter?.title}</h2>
-            <p className={styles.description}>{formatDate(frontmatter?.publishDate || '')}</p>
+            <p className={styles.description}>{frontmatter?.createdAt}</p>
           </Link>
         );
       })}
