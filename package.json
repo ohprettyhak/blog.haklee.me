@@ -41,7 +41,7 @@
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "remark-blockquote-alerts": "^0.0.2",
+    "remark-blockquote-alerts": "^0.0.3",
     "remark-gfm": "^1.0.0",
     "unist-util-visit": "^2.0.3"
   },
